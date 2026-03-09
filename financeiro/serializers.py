@@ -18,3 +18,6 @@ class TransacaoSerializer(serializers.ModelSerializer):
         if "salário" in descricao and tipo == 'SAÍDA':
              raise serializers.ValidationError("salário não é uma saída")
         return data
+
+    def perform_create(self, serializer):
+         cliente_do_usuario = self.request.user.cliente    
